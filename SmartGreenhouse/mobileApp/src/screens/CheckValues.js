@@ -1,5 +1,5 @@
 import React, { useState, Component, useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native'
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
@@ -89,22 +89,24 @@ export default function CheckValues() {
     };
 
     return (
-      <View style={styles.container}>
-        <Text>CheckValues</Text>
-        <StatusBar style="auto" />
-        <Text>Light Value: {light} </Text>
-        <CustomButton text="Check light" onPress={fetchLightData} />
-        <Text>Soil Moisture Value: {soilMoisture} </Text>
-        <CustomButton text="Check soil moisture" onPress={fetchSoilMoistureData} />
-        <Text>Air Humidity Value: {airHumidity} %</Text>
-        <CustomButton text="Check air humidity" onPress={fetchAirHumidityData} />
-        <Text>Temperature Value: {temperature} °C</Text>
-        <CustomButton text="Check temperature" onPress={fetchTemperatureData} />
-        <Text>Turn on water pump: {pump}</Text>
-        <CustomButton text="Turn on water pump" onPress={activatePump} />
-        <Text>Turn on fan: {fan}</Text>
-        <CustomButton text="Turn on fan" onPress={activateFan} />
-      </View>
+      <ImageBackground source={require('../images/plants.webp')} style={styles.backgroundImage}>
+        <View style={styles.container}>
+          <Text>CheckValues</Text>
+          <StatusBar style="auto" />
+          <Text>Light Value: {light} </Text>
+          <CustomButton text="Check light" onPress={fetchLightData} />
+          <Text>Soil Moisture Value: {soilMoisture} </Text>
+          <CustomButton text="Check soil moisture" onPress={fetchSoilMoistureData} />
+          <Text>Air Humidity Value: {airHumidity} %</Text>
+          <CustomButton text="Check air humidity" onPress={fetchAirHumidityData} />
+          <Text>Temperature Value: {temperature} °C</Text>
+          <CustomButton text="Check temperature" onPress={fetchTemperatureData} />
+          <Text>Turn on water pump: {pump}</Text>
+          <CustomButton text="Turn on water pump" onPress={activatePump} />
+          <Text>Turn on fan: {fan}</Text>
+          <CustomButton text="Turn on fan" onPress={activateFan} />
+        </View>
+      </ImageBackground>
       
     );
   }
@@ -115,4 +117,10 @@ export default function CheckValues() {
       alignItems: 'center',
       justifyContent: 'center',
     },
+    backgroundImage: {
+      flex: 1,
+      resizeMode: 'cover',
+      justifyContent: 'center',
+    },
+  
   });
