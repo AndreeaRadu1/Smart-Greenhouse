@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
 import CustomButton from '../components/customButton';
 
-
 export default function CheckValues() {
     const [light, setLight] = useState(null);
     const [soilMoisture, setSoilMoisture] = useState(null);
@@ -19,9 +18,9 @@ export default function CheckValues() {
         const response = await fetch('http://192.168.100.109:5000/api/1');
         const data = await response.json();
         if(data.sensors.value == 0){
-          setLight('It\' light');
+          setLight('It\'s light');
         }else
-          setLight('It\' dark');
+          setLight('It\'s dark');
 
       } catch (error) {
         console.error('Error fetching light data:', error);
@@ -91,7 +90,7 @@ export default function CheckValues() {
     return (
       <ImageBackground source={require('../images/plants.webp')} style={styles.backgroundImage}>
         <View style={styles.container}>
-          <Text>CheckValues</Text>
+          <Text style={styles.header}>Check Values</Text>
           <StatusBar style="auto" />
           <Text>Light Value: {light} </Text>
           <CustomButton text="Check light" onPress={fetchLightData} />
@@ -122,5 +121,12 @@ export default function CheckValues() {
       resizeMode: 'cover',
       justifyContent: 'center',
     },
+    header: {
+      top: 75,
+      fontWeight: '700',
+      fontSize: 20,
+      color: '#754d17',
+      marginBottom: 100,
+    }
   
   });
