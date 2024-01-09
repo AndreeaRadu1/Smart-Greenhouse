@@ -13,14 +13,14 @@ export default function Statistics() {
   const [prediction, setPrediction] = useState(null);
 
   const seePredictionsPressed = async () => {
-    // try {
-    //   const result = await callPython('lstm_for_predicting_energy_consumption.py', 'predict_energy', [0]);
-    //   console.log('Python script result:', result);
-    //   setPrediction(result);
-    // } catch (error) {
-    //   console.error('Error calling Python script:', error.message);
-    // }
-    setPrediction(5.923054248089707);
+    try {
+      const response = await fetch('http://192.168.19.145:5000/api/7');
+      if(response)
+        setPrediction(response);
+
+    } catch (error) {
+      console.error('Unable to fetch predictions:', error);
+    }
   };
 
   const placeholder = {
@@ -61,8 +61,11 @@ export default function Statistics() {
         </View>
 
         <CustomButton text="See consumption prediction" onPress={handleSubmit(seePredictionsPressed)} />
-        <Text>Prediction: {prediction}</Text>
-
+        <Text>
+          {selectedValue && prediction[selectedValue] && (
+            <Text>Prediction: {prediction[selectedValue]}</Text>
+          )}
+        </Text>
       </View>
     </ImageBackground>
   );

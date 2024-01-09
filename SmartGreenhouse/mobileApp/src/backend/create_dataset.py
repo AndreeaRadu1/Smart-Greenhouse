@@ -3,7 +3,7 @@ from firebase_admin import db, credentials
 import csv
 import json
 from collections import OrderedDict
-import lstm_for_predicting_energy_consumption
+import SmartGreenhouse.mobileApp.src.backend.lstm_for_predicting_energy_consumption as lstm_for_predicting_energy_consumption
 
 # authenticate to firebase
 cred = credentials.Certificate("credentials.json")

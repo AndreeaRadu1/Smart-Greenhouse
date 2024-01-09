@@ -14,6 +14,7 @@ import firebase_admin
 from firebase_admin import db, credentials
 from datetime import datetime
 import calendar
+import SmartGreenhouse.mobileApp.src.backend.lstm_for_predicting_energy_consumption as lstm_for_predicting_energy_consumption
 
 import numpy as np
 
@@ -167,10 +168,27 @@ class DataBase(Resource):
             DataBase.check_values()
             return DataBase.counter
         # system off
-        if id == 8:         
+        if id == 8:
             DataBase.counter = 1
             DataBase.check_values()
             return DataBase.counter
+        # predict statistics
+        if id == 9:
+            energy_consumption_values = {
+                "january": lstm_for_predicting_energy_consumption.predict_energy(0),
+                "february": lstm_for_predicting_energy_consumption.predict_energy(1),
+                "march": lstm_for_predicting_energy_consumption.predict_energy(2),
+                "april": lstm_for_predicting_energy_consumption.predict_energy(3),
+                "may": lstm_for_predicting_energy_consumption.predict_energy(4),
+                "june": lstm_for_predicting_energy_consumption.predict_energy(5),
+                "july": lstm_for_predicting_energy_consumption.predict_energy(6),
+                "august": lstm_for_predicting_energy_consumption.predict_energy(7),
+                "september": lstm_for_predicting_energy_consumption.predict_energy(8),
+                "october": lstm_for_predicting_energy_consumption.predict_energy(9),
+                "november": lstm_for_predicting_energy_consumption.predict_energy(10),
+                "december": lstm_for_predicting_energy_consumption.predict_energy(11)
+            }
+            return energy_consumption_values
 
         return "Not found", 404
 api.add_resource(DataBase,"/api","/api/<int:id>")
