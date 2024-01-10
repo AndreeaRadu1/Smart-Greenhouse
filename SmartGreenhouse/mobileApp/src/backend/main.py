@@ -42,7 +42,7 @@ api = Api(app)
 
 # authenticate to firebase
 cred = credentials.Certificate("credentials.json")
-firebase_admin.initialize_app(cred, {"databaseURL": "https://smartgreenhouse-e66ef-default-rtdb.europe-west1.firebasedatabase.app/"})
+firebase_admin.initialize_app(cred, {"databaseURL": "actual-database-url"})
 ref = db.reference("/")
 
 current_date = datetime.now()
