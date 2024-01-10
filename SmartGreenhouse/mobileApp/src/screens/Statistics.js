@@ -14,7 +14,7 @@ export default function Statistics() {
 
   const seePredictionsPressed = async () => {
     try {
-      const response = await fetch('http://192.168.19.145:5000/api/7');
+      const response = await fetch('http://raspberry-ip:5000/api/7');
       if(response)
         setPrediction(response);
 
