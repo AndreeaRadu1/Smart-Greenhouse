@@ -9,7 +9,7 @@ export default function SystemOnOff() {
     
     const turnSystemOn = async () => {
       try {
-        const response = await fetch('http://192.168.19.145:5000/api/7');
+        const response = await fetch('http://raspberry-ip:5000/api/7');
         const data = await response.json();
         if(response)
           setSystemOn('System on');
@@ -21,7 +21,7 @@ export default function SystemOnOff() {
 
     const turnSystemOff = async () => {
       try {
-        const response = await fetch('http://192.168.19.145:5000/api/8');
+        const response = await fetch('http://raspberry-ip:5000/api/8');
         const data = await response.json();
         if(response)
           setSystemOff('System off');
