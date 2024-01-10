@@ -15,7 +15,7 @@ export default function CheckValues() {
     
     const fetchLightData = async () => {
       try {
-        const response = await fetch('http://192.168.19.145:5000/api/1');
+        const response = await fetch('http://raspberry-ip:5000/api/1');
         const data = await response.json();
         if(data.sensors.value == 0){
           setLight('It\'s light');
@@ -29,7 +29,7 @@ export default function CheckValues() {
 
     const fetchSoilMoistureData = async () => {
       try {
-        const response = await fetch('http://192.168.19.145:5000/api/2');
+        const response = await fetch('http://raspberry-ip:5000/api/2');
         const data = await response.json();
         if(data.sensors.value){
           setSoilMoisture('Water detected');
@@ -43,7 +43,7 @@ export default function CheckValues() {
 
     const fetchAirHumidityData = async () => {
       try {
-        const response = await fetch('http://192.168.19.145:5000/api/3');
+        const response = await fetch('http://raspberry-ip:5000/api/3');
         const data = await response.json();
         setAirHumidity(data.sensors.value);
 
@@ -54,7 +54,7 @@ export default function CheckValues() {
 
     const fetchTemperatureData = async () => {
       try {
-        const response = await fetch('http://192.168.19.145:5000/api/4');
+        const response = await fetch('http://raspberry-ip:5000/api/4');
         const data = await response.json();
         setTemperature(data.sensors.value);
 
@@ -65,7 +65,7 @@ export default function CheckValues() {
 
     const activatePump = async () => {
       try {
-        const response = await fetch('http://192.168.19.145:5000/api/5');
+        const response = await fetch('http://raspberry-ip:5000/api/5');
         const data = await response.json();
         if(response)
           setPump('The plants were watered');
@@ -77,7 +77,7 @@ export default function CheckValues() {
 
     const activateFan = async () => {
       try {
-        const response = await fetch('http://192.168.19.145:5000/api/6');
+        const response = await fetch('http://raspberry-ip:5000/api/6');
         const data = await response.json();
         if(response)
           setFan('The plants were cooled');
